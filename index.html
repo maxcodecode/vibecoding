@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibePort — See what people are vibe coding</title>
+    <meta name="description" content="Explore Vibe Coding projects from developers around the world. Filter by build tool and category. Free submission, dofollow link.">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/assets/vibeport.css">
+</head>
+<body>
+    <script>
+        // 提前应用主题，避免明暗切换闪烁
+        (function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d)){document.body.classList.add('dark-theme');}}catch(e){}})();
+    </script>
+
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">V</div>
+                VibePort
+            </a>
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search projects..." id="searchInput" data-i18n-placeholder="nav.searchPlaceholder">
+                <span class="kbd-shortcut">⌘ K</span>
+            </div>
+            <div class="header-actions">
+                <button class="btn-random" id="btnRandom" title="Random" data-i18n-title="nav.random">
+                    <span>🎲</span>
+                    <span class="text" data-i18n="nav.random">Random</span>
+                    <kbd>R</kbd>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme" data-i18n-title="nav.themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <a href="/submit.html" class="btn-submit" data-i18n="nav.submit">Submit</a>
+                <select class="lang-select" id="langSelect" aria-label="Language">
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main>
+        <!-- 标题区 -->
+        <section class="hero">
+            <h1>
+                <span data-i18n="hero.title1">See what people are </span><span class="highlight" data-i18n="hero.title2">vibe coding</span><span data-i18n="hero.title3"></span>
+            </h1>
+            <div class="hero-tags">
+                <span class="hero-tag" data-i18n="hero.badge1">Get inspired</span>
+                <span class="hero-tag" data-i18n="hero.badge2">Dofollow link</span>
+                <span class="hero-tag" data-i18n="hero.badge3">Free submission</span>
+            </div>
+        </section>
+
+        <!-- 筛选区 -->
+        <section class="filters">
+            <div class="filter-group">
+                <span class="filter-label" data-i18n="filter.buildTool">Build Tool</span>
+                <select class="filter-select" id="toolSelect"></select>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label" data-i18n="filter.category">Category</span>
+                <select class="filter-select" id="categorySelect"></select>
+            </div>
+        </section>
+
+        <!-- 双栏布局 -->
+        <div class="layout-grid">
+
+            <!-- 左侧：项目列表 -->
+            <div>
+                <!-- 广告位（顶部，默认注释，启用见 assets/ads.js） -->
+                <!-- <div id="ad-top" class="ad-slot">Ad slot (top)</div> -->
+                <section class="project-list" id="projectList"></section>
+                <!-- 广告位（底部） -->
+                <div id="ad-bottom" class="ad-slot">Ad slot (bottom)</div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+
+            <!-- 右侧：侧边栏 -->
+            <aside class="sidebar-section">
+
+                <!-- 开发者故事 -->
+                <div class="sidebar-block">
+                    <h2 class="sidebar-title" data-i18n="sidebar.stories">Developer stories</h2>
+                    <div class="list-container">
+                        <a href="#" class="list-item">
+                            <span class="list-index">01</span>
+                            <h4 class="list-title" data-i18n="story.1">I built a small tool with 1k+ DAU in 5 hours using AI</h4>
+                        </a>
+                        <a href="#" class="list-item">
+                            <span class="list-index">02</span>
+                            <h4 class="list-title" data-i18n="story.2">How non-CS programmers build their own products with Vibe Coding</h4>
+                        </a>
+                        <a href="#" class="list-item">
+                            <span class="list-index">03</span>
+                            <h4 class="list-title" data-i18n="story.3">From 0 to 1: my DeepSeek-assisted development retrospective</h4>
+                        </a>
+                        <a href="#" class="list-item">
+                            <span class="list-index">04</span>
+                            <h4 class="list-title" data-i18n="story.4">How I did a cold start with only $10 after launch</h4>
+                        </a>
+                        <a href="#" class="list-item">
+                            <span class="list-index">05</span>
+                            <h4 class="list-title" data-i18n="story.5">Talking to indie developers: will Vibe Coding replace traditional coding?</h4>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 常见问题 -->
+                <div class="sidebar-block">
+                    <h2 class="sidebar-title" data-i18n="sidebar.faq">FAQ</h2>
+                    <div class="list-container">
+
+                        <div class="list-item faq-item" onclick="this.classList.toggle('open')">
+                            <div class="list-header">
+                                <span class="list-index">01</span>
+                                <h4 class="list-title" data-i18n="faq.q1">Are all listed projects built with Vibe Coding?</h4>
+                            </div>
+                            <div class="list-answer" data-i18n="faq.a1">Yes. Everything we list is built with AI-assisted coding tools — whether a full product or a small tool, as long as it's made the Vibe Coding way, it can be submitted.</div>
+                        </div>
+
+                        <div class="list-item faq-item" onclick="this.classList.toggle('open')">
+                            <div class="list-header">
+                                <span class="list-index">02</span>
+                                <h4 class="list-title" data-i18n="faq.q2">Why submit by email instead of a form?</h4>
+                            </div>
+                            <div class="list-answer" data-i18n="faq.a2">To ensure quality, we currently use manual review. Submitting by email lets you include a more detailed project introduction and your build story.</div>
+                        </div>
+
+                        <div class="list-item faq-item" onclick="this.classList.toggle('open')">
+                            <div class="list-header">
+                                <span class="list-index">03</span>
+                                <h4 class="list-title" data-i18n="faq.q3">Are links dofollow?</h4>
+                            </div>
+                            <div class="list-answer" data-i18n="faq.a3">Yes, all listed project links are dofollow, giving great indie developers more exposure and SEO value.</div>
+                        </div>
+
+                        <div class="list-item faq-item" onclick="this.classList.toggle('open')">
+                            <div class="list-header">
+                                <span class="list-index">04</span>
+                                <h4 class="list-title" data-i18n="faq.q4">Can I submit a project that's still in development?</h4>
+                            </div>
+                            <div class="list-answer" data-i18n="faq.a4">Yes. We very much welcome "work in progress" projects, and will show them as "preview" with their development status marked.</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                <div class="footer-brand-logo">
+                    <div class="logo-icon" style="width: 26px; height: 26px; font-size: 13px;">V</div>
+                    VibePort
+                </div>
+                <p class="footer-desc" data-i18n="footer.desc">A curated showcase of projects built with AI coding tools. Discover what developers around the world are shipping with Vibe Coding.</p>
+                <a href="/" class="footer-badge">
+                    <span class="footer-badge-icon">V</span>
+                    <span data-i18n="footer.featuredBadge">Featured on VibePort</span>
+                </a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.buildTools">Build Tools</div>
+                <a href="/?tool=DeepSeek+Harness" class="footer-link">DeepSeek Harness</a>
+                <a href="/?tool=Claude+Code" class="footer-link">Claude Code</a>
+                <a href="/?tool=GitHub+Copilot" class="footer-link">GitHub Copilot</a>
+                <a href="/?tool=OpenAI+Codex" class="footer-link">OpenAI Codex</a>
+                <a href="/?tool=Cursor" class="footer-link">Cursor</a>
+                <a href="/?tool=Bolt.new" class="footer-link">Bolt.new</a>
+                <a href="/?tool=Lovable" class="footer-link">Lovable</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.categories">Categories</div>
+                <a href="/" class="footer-link" data-i18n="footer.allProjects">All projects</a>
+                <a href="/?category=tool" class="footer-link" data-i18n="cat.tool">Tool</a>
+                <a href="/?category=fun" class="footer-link" data-i18n="cat.fun">Fun</a>
+                <a href="/?category=office" class="footer-link" data-i18n="cat.office">Office</a>
+                <a href="/?category=productivity" class="footer-link" data-i18n="cat.productivity">Productivity</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.friendLinks">Friend Links</div>
+                <a href="mailto:max2026105@gmail.com" class="footer-link" data-i18n="footer.friendApply">Apply for link exchange</a>
+                <a href="/" class="footer-link">AI Directory</a>
+                <a href="/" class="footer-link">Design Resources</a>
+                <a href="/" class="footer-link">Dev Community</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.connect">Connect</div>
+                <a href="/" class="footer-link" data-i18n="footer.xtwitter">X / Twitter</a>
+                <a href="/" class="footer-link" data-i18n="footer.github">GitHub</a>
+                <a href="/" class="footer-link" data-i18n="footer.email">Email</a>
+                <a href="/" class="footer-link" data-i18n="footer.rss">RSS Feed</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div data-i18n="footer.copyright">© 2026 VibePort. All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="/privacy.html" data-i18n="footer.privacy">Privacy</a>
+                <a href="mailto:max2026105@gmail.com"><span data-i18n="footer.report">Report abuse:</span> max2026105@gmail.com</a>
+                <span data-i18n="footer.builtWith">Built with AI</span>
+                <a href="/submit.html" data-i18n="footer.submitYourProject">Submit your project</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/projects.js"></script>
+    <script src="/assets/stats.js"></script>
+    <script src="/assets/ads.js"></script>
+    <script src="/assets/i18n.js"></script>
+    <script src="/assets/theme.js"></script>
+    <script src="/assets/app.js"></script>
+</body>
+</html>

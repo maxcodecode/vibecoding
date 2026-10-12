@@ -1,0 +1,12 @@
+# VibePort
+
+> VibePort is a curated showcase of projects built with AI coding tools (Vibe Coding). Discover what developers around the world are shipping with AI, filter by build tool and category, and submit your own project for free.
+
+- [VibePort Home](https://vibeport.me/): Discover Vibe Coded apps. Filter the directory by build tool (Claude Code, Cursor, Bolt.new, Lovable, etc.) and category (Tool, Fun, Office, Productivity, Featured), search by keyword, and read the FAQ.
+- [Submit a project](https://vibeport.me/submit.html): Submit a Vibe Coding project by email. The page generates a pre-filled email (product name, URL, one-line description, build tool, build time, and initial cost) that you copy and send to max2026105@gmail.com. English version required.
+- [Privacy Policy](https://vibeport.me/privacy.html): How VibePort handles data, cookies and analytics (Microsoft Clarity), third-party links, and contact/abuse-report information.
+
+## Reference
+
+- [Sitemap](https://vibeport.me/sitemap.xml): XML sitemap of the site.
+- [Contact / Report abuse](mailto:max2026105@gmail.com): Reach the site owner or report abuse at max2026105@gmail.com.

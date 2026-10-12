@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Project — VibePort</title>
+    <meta name="description" content="Submit your Vibe Coding project to VibePort. Free submission, dofollow link. Just copy the email and send it.">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/assets/vibeport.css">
+</head>
+<body>
+    <script>
+        (function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d)){document.body.classList.add('dark-theme');}}catch(e){}})();
+    </script>
+
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">V</div>
+                VibePort
+            </a>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme" data-i18n-title="nav.themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <a href="/submit.html" class="btn-submit" data-i18n="nav.submit">Submit</a>
+                <select class="lang-select" id="langSelect" aria-label="Language">
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main>
+        <div class="page-wrap">
+            <div class="page-card">
+                <h1 data-i18n="submit.title">⚡ Submit a Vibe Coding project</h1>
+                <p class="lead">
+                    <span data-i18n="submit.subIntro">Fill in the form below, click the button to copy the email content, then paste and send it from your own email client.</span><br>
+                    <span data-i18n="submit.recipient">Recipient:</span> <b>max2026105@gmail.com</b>
+                </p>
+
+                <form id="contactForm" onsubmit="return doSubmit(event)">
+                    <div class="form-field">
+                        <label class="form-label"><span data-i18n="submit.product">Product name</span><span class="req">*</span></label>
+                        <input type="text" id="f_product" class="form-input" required placeholder="e.g. VibePort">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label"><span data-i18n="submit.url">Product URL</span><span class="req">*</span></label>
+                        <input type="url" id="f_url" class="form-input" required placeholder="https://your-product.com">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label"><span data-i18n="submit.intro">One-line description</span><span class="req">*</span></label>
+                        <input type="text" id="f_intro" class="form-input" required placeholder="Describe your product in one sentence (English)">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label"><span data-i18n="submit.tool">Build tool</span><span class="req">*</span></label>
+                        <input type="text" id="f_tool" class="form-input" required placeholder="e.g. Lovable, Bolt.new, Cursor, Claude Code, DeepSeek...">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="form-label"><span data-i18n="submit.time">Build time</span><span class="req">*</span></label>
+                            <input type="text" id="f_time" class="form-input" required placeholder="e.g. 2 days / 5 hours">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label"><span data-i18n="submit.cost">Initial cost (USD)</span><span class="req">*</span></label>
+                            <input type="text" id="f_cost" class="form-input" required placeholder="e.g. $0 / $20">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="form-btn" id="submitBtn" data-i18n="submit.button">📋 Copy email content</button>
+                </form>
+
+                <div class="form-tip" id="tip">
+                    <b data-i18n="submit.copied">✅ Copied to clipboard!</b><br>
+                    <span data-i18n="submit.tipText">Next: open your email client → compose → recipient:</span>
+                    <b>max2026105@gmail.com</b>
+                    <span data-i18n="submit.tipSubject">· subject:</span> <b id="subjectTip"></b>
+                    <span data-i18n="submit.tipPaste">→ paste the body → send.</span>
+                </div>
+
+                <!-- 提交须知板块 -->
+                <div class="form-notice">
+                    <h3 data-i18n="submit.noticeTitle">📌 Submission notes</h3>
+                    <ul>
+                        <li data-i18n="submit.notice1">We use a unified display template; please submit in English.</li>
+                        <li data-i18n="submit.notice2">The product must be built with Vibe Coding, with little to no hand-written code.</li>
+                        <li data-i18n="submit.notice3">A live URL is required; users should see a real, working interface, not a "coming soon" page.</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top:20px; font-size:12px; text-align:center; color:var(--text-muted);" data-i18n="submit.footerNote">This page is a static front-end page; no information is stored.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                <div class="footer-brand-logo">
+                    <div class="logo-icon" style="width: 26px; height: 26px; font-size: 13px;">V</div>
+                    VibePort
+                </div>
+                <p class="footer-desc" data-i18n="footer.desc">A curated showcase of projects built with AI coding tools. Discover what developers around the world are shipping with Vibe Coding.</p>
+                <a href="/" class="footer-badge">
+                    <span class="footer-badge-icon">V</span>
+                    <span data-i18n="footer.featuredBadge">Featured on VibePort</span>
+                </a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.buildTools">Build Tools</div>
+                <a href="/?tool=DeepSeek+Harness" class="footer-link">DeepSeek Harness</a>
+                <a href="/?tool=Claude+Code" class="footer-link">Claude Code</a>
+                <a href="/?tool=GitHub+Copilot" class="footer-link">GitHub Copilot</a>
+                <a href="/?tool=OpenAI+Codex" class="footer-link">OpenAI Codex</a>
+                <a href="/?tool=Cursor" class="footer-link">Cursor</a>
+                <a href="/?tool=Bolt.new" class="footer-link">Bolt.new</a>
+                <a href="/?tool=Lovable" class="footer-link">Lovable</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.categories">Categories</div>
+                <a href="/" class="footer-link" data-i18n="footer.allProjects">All projects</a>
+                <a href="/?category=tool" class="footer-link" data-i18n="cat.tool">Tool</a>
+                <a href="/?category=fun" class="footer-link" data-i18n="cat.fun">Fun</a>
+                <a href="/?category=office" class="footer-link" data-i18n="cat.office">Office</a>
+                <a href="/?category=productivity" class="footer-link" data-i18n="cat.productivity">Productivity</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.friendLinks">Friend Links</div>
+                <a href="mailto:max2026105@gmail.com" class="footer-link" data-i18n="footer.friendApply">Apply for link exchange</a>
+                <a href="/" class="footer-link">AI Directory</a>
+                <a href="/" class="footer-link">Design Resources</a>
+                <a href="/" class="footer-link">Dev Community</a>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-column-title" data-i18n="footer.connect">Connect</div>
+                <a href="/" class="footer-link" data-i18n="footer.xtwitter">X / Twitter</a>
+                <a href="/" class="footer-link" data-i18n="footer.github">GitHub</a>
+                <a href="/" class="footer-link" data-i18n="footer.email">Email</a>
+                <a href="/" class="footer-link" data-i18n="footer.rss">RSS Feed</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div data-i18n="footer.copyright">© 2026 VibePort. All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="/privacy.html" data-i18n="footer.privacy">Privacy</a>
+                <a href="mailto:max2026105@gmail.com"><span data-i18n="footer.report">Report abuse:</span> max2026105@gmail.com</a>
+                <span data-i18n="footer.builtWith">Built with AI</span>
+                <a href="/submit.html" data-i18n="footer.submitYourProject">Submit your project</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Copied ✓ paste it in your email and send</div>
+
+    <script src="/assets/i18n.js"></script>
+    <script src="/assets/theme.js"></script>
+    <script>
+    // ========== 收件邮箱与主题前缀 ==========
+    const TO_EMAIL = "max2026105@gmail.com";
+    const LOCALES = { en: 'en-GB', zh: 'zh-CN', fr: 'fr-FR' };
+
+    function lang() { return (window.getLang && window.getLang()) || 'en'; }
+
+    // 更新 toast 文案（随语言切换）
+    function updateToast() {
+        document.getElementById('toast').textContent = window.t('submit.toast', lang());
+    }
+    if (window.onLangChange) window.onLangChange(updateToast);
+
+    function doSubmit(e) {
+        e.preventDefault();
+        const L = lang();
+        const product = document.getElementById('f_product').value.trim();
+        const url = document.getElementById('f_url').value.trim();
+        const intro = document.getElementById('f_intro').value.trim();
+        const tool = document.getElementById('f_tool').value.trim();
+        const time = document.getElementById('f_time').value.trim();
+        const cost = document.getElementById('f_cost').value.trim();
+
+        const labels = {
+            product: window.t('submit.product', L),
+            url: window.t('submit.url', L),
+            intro: window.t('submit.intro', L),
+            tool: window.t('submit.tool', L),
+            time: window.t('submit.time', L),
+            cost: window.t('submit.cost', L),
+            timeLabel: window.t('submit.emailTime', L)
+        };
+        const emailIntro = window.t('submit.emailIntro', L);
+        const subject = window.t('submit.emailSubject', L) + ' - ' + product + ' - ' + tool;
+
+        const now = new Date();
+        const timeStr = now.toLocaleString(LOCALES[L] || 'en-GB', { hour12: false });
+
+        const body =
+            emailIntro + '\n\n' +
+            labels.product + ': ' + product + '\n' +
+            labels.url + ': ' + url + '\n' +
+            labels.intro + ': ' + intro + '\n' +
+            labels.tool + ': ' + tool + '\n' +
+            labels.time + ': ' + time + '\n' +
+            labels.cost + ': ' + cost + '\n' +
+            labels.timeLabel + ': ' + timeStr + '\n\n' +
+            '—— ' + (L === 'zh' ? '此邮件由 VibePort 提交页生成' : (L === 'fr' ? 'Cet email a été généré par la page de soumission VibePort.' : 'This email was generated by the VibePort submission page.'));
+
+        const fullText = 'To: ' + TO_EMAIL + '\nSubject: ' + subject + '\n\n' + body;
+
+        copyText(fullText).then(() => {
+            document.getElementById('subjectTip').textContent = subject;
+            document.getElementById('tip').classList.add('show');
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+            document.getElementById('tip').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        return false;
+    }
+
+    async function copyText(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (err) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+    }
+
+    updateToast();
+    </script>
+</body>
+</html>
